@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use app\Category;
+// use app\Category; //not working try is lader
+use DB;
 
 class CategoryController extends Controller
 {
@@ -11,7 +12,7 @@ class CategoryController extends Controller
 
     }
     public function storeCategory(Request $request){
-      return $request->all();
+      // return $request->all();
       // $category=new Category();
       // $category->categoryName=$request->categoryName;
       // $category->categoryDescription=$request->categoryDescription;
@@ -22,7 +23,17 @@ class CategoryController extends Controller
       // Category::create($request->all);
       // return 'Category info Save successfully';
 
+      DB::table('categories')->insert([
+        'categoryName'=>$request->categoryName,
+        'categoryDescription'=>$request->categoryDescription,
+        'publicationStatus'=>$request->publicationStatus,
+      ]);
+      // return redirect()->back();   //redirect path ..
+      return redirect('/category/add')->with('massage','category save successfully');  //redirect path ..
+    }
 
 
+    public function manageCategory(){
+      return view('admin.category.manageCategory');
     }
 }

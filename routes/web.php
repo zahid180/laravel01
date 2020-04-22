@@ -25,4 +25,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // start category info
 Route::get('/category/add', 'CategoryController@createCategory');
 Route::post('/category/save', 'CategoryController@storeCategory');
+Route::get('/category/manage', 'CategoryController@manageCategory');
 // end category info

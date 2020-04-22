@@ -2,6 +2,8 @@
 @section('contain')
 <div class="row">
   <div class="col-lg-12">
+    <h3 class="text-center text-success">{{Session::get('massage')}}</h3>
+    <hr/>
     <div class="well">
       {!!Form::open(['url'=>'category/save','method'=>'POST','class'=>'form-horizontal'])!!}
 

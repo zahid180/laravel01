@@ -51,7 +51,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Catagory:</h6>
         <a class="collapse-item" href="{{url('/category/add')}}">Add Catagory</a>
-        <a class="collapse-item" href="utilities-border.html">Borders</a>
+        <a class="collapse-item" href="{{url('/category/manage')}}">Manage Category</a>
         <a class="collapse-item" href="utilities-animation.html">Animations</a>
         <a class="collapse-item" href="utilities-other.html">Other</a>
       </div>
