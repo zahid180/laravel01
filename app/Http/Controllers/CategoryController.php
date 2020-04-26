@@ -12,6 +12,10 @@ class CategoryController extends Controller
 
     }
     public function storeCategory(Request $request){
+      $this->validate($request,[
+        'categoryName'=>'required',
+        'categoryDescription'=>'required',
+      ]);
       // return $request->all();
       // one way to insert data
       // $category=new Category();
@@ -36,7 +40,30 @@ class CategoryController extends Controller
 
 
     public function manageCategory(){
-      $categories=Category::all();
-      return view('admin.category.manageCategory'.['category'=>$categories]);
+      $category=Category::all();
+      return view('admin.category.manageCategory',['categories'=>$category]);
     }
+
+    public function categoryEdit($id){
+      $categoryById=Category::where('id',$id)->first();
+      return view('admin.category.editCategory',['categories'=>$categoryById]);
+
+    }
+
+    public function categoryUpdate(Request $request){
+      // dd($request->all()); dekhar jonno..
+      $category=Category::find($request->categoryId);
+      $category->categoryName=$request->categoryName;
+      $category->categoryDescription=$request->categoryDescription;
+      $category->publicationStatus=$request->publicationStatus;
+      $category->save();
+      return redirect('/category/manage')->with('massage','Category Update successfully');
+    }
+
+    public function categoryDelet($id){
+      $category=Category::find($id);
+      $category->delete();
+        return redirect('/category/manage')->with('massage','Category Delete successfully');
+    }
+
 }

@@ -2,23 +2,22 @@
 @section('contain')
 <div class="row">
   <div class="col-lg-12">
-    <h3 class="text-center text-success">{{Session::get('massage')}}</h3>
-    <hr/>
     <div class="well">
-      {!!Form::open(['url'=>'category/save','method'=>'POST','class'=>'form-horizontal'])!!}
+      {!!Form::open(['url'=>'category/update','method'=>'POST','name'=>'EditCategoryForm', 'class'=>'form-horizontal'])!!}
 
         <div class="form-group">
           <label for="">Category Name</label>
           <div class="col-sm-10">
-            <input type="text" name="categoryName" class="form-control" value="">
-            <span class="text-danger">{{$errors->has('categoryName') ? $errors->first('categoryName'):''}}</span>
+            <input type="text" name="categoryName" value="{{$categories->categoryName}}" class="form-control">
+            <input type="hidden" name="categoryId" value="{{$categories->id}}" class="form-control">
           </div>
         </div>
         <div class="form-group">
           <label for="">Category description</label>
           <div class="col-sm-10">
-            <textarea type="text" name="categoryDescription" class="form-control" rows="8" cols="80"></textarea>
-            <span class="text-danger">{{$errors->has('categoryDescription') ? $errors->first('categoryDescription'):''}}</span>
+            <textarea type="text" name="categoryDescription" class="form-control" rows="8" cols="80">
+              {{$categories->categoryDescription}}
+            </textarea>
           </div>
         </div>
         <div class="form-group">
@@ -34,7 +33,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-10">
-            <button type="submit" name="zahid" class="btn btn-success btn-block">Save Category Info</button>
+            <button type="submit" name="zahid" class="btn btn-success btn-block">Update Category Info</button>
           </div>
         </div>
 
@@ -43,5 +42,10 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+document.forms['EditCategoryForm'].elements['publicationStatus'].value={{$categories->publicationStatus}}
+
+</script>
 
 @endsection
