@@ -39,3 +39,12 @@ Route::get('/manufacture/edit/{id}','ManufactureController@editManufacture');
 Route::post('/manufacture/update','ManufactureController@updateManufacture');
 Route::get('/manufacture/delet/{id}','ManufactureController@deletManufacture');
 // end Manufacture info
+
+// start Product info
+Route::get('/product/add','productController@addProduct');
+Route::post('product/save','productController@storeProduct');
+Route::get('/product/manage','productController@manageProduct');
+Route::get('/product/edit/{id}','productController@editProduct');
+Route::post('/product/update','productController@updateProduct');
+Route::get('/product/delet/{id}','productController@deletProduct');
+// end Product info
