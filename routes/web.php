@@ -30,3 +30,12 @@ Route::get('/category/edit/{id}', 'CategoryController@categoryEdit');
 Route::post('/category/update', 'CategoryController@categoryUpdate');
 Route::get('/category/delet/{id}', 'CategoryController@categoryDelet');
 // end category info
+
+// start Manufacture info
+Route::get('/manufacture/add','ManufactureController@addManufacture');
+Route::post('/manufacture/save','ManufactureController@storeManufacture');
+Route::get('/manufacture/manage','ManufactureController@manageManufacture');
+Route::get('/manufacture/edit/{id}','ManufactureController@editManufacture');
+Route::post('/manufacture/update','ManufactureController@updateManufacture');
+Route::get('/manufacture/delet/{id}','ManufactureController@deletManufacture');
+// end Manufacture info

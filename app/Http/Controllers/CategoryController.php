@@ -9,7 +9,6 @@ class CategoryController extends Controller
 {
     public function createCategory(){
       return view('admin.category.creatCategory');
-
     }
     public function storeCategory(Request $request){
       $this->validate($request,[
@@ -47,7 +46,6 @@ class CategoryController extends Controller
     public function categoryEdit($id){
       $categoryById=Category::where('id',$id)->first();
       return view('admin.category.editCategory',['categories'=>$categoryById]);
-
     }
 
     public function categoryUpdate(Request $request){

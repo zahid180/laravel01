@@ -5,20 +5,20 @@
     <h3 class="text-center text-success">{{Session::get('massage')}}</h3>
     <hr/>
     <div class="well">
-      {!!Form::open(['url'=>'category/save','method'=>'POST','class'=>'form-horizontal'])!!}
+      {!!Form::open(['url'=>'manufacture/save','method'=>'POST','class'=>'form-horizontal'])!!}
 
         <div class="form-group">
-          <label for="">Category Name</label>
+          <label for="Manufacture">Manufacture Name</label>
           <div class="col-sm-10">
-            <input type="text" name="categoryName" class="form-control" value="">
-            <span class="text-danger">{{$errors->has('categoryName') ? $errors->first('categoryName'):''}}</span>
+            <input type="text" name="manufactureName" class="form-control" value="">
+              <span class="text-danger">{{$errors->has('manufactureName') ? $errors->first('manufactureName'):''}}</span>
           </div>
         </div>
         <div class="form-group">
-          <label for="">Category description</label>
+          <label for="Manufacture">Manufacture description</label>
           <div class="col-sm-10">
-            <textarea type="text" name="categoryDescription" class="form-control" rows="8" cols="80"></textarea>
-            <span class="text-danger">{{$errors->has('categoryDescription') ? $errors->first('categoryDescription'):''}}</span>
+            <textarea type="text" name="manufactureDescription" class="form-control" rows="8" cols="80"></textarea>
+            <span class="text-danger">{{$errors->has('manufactureDescription') ? $errors->first('manufactureDescription'):''}}</span>
           </div>
         </div>
         <div class="form-group">
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
           <div class="col-sm-10">
-            <button type="submit" name="zahid" class="btn btn-success btn-block">Save Category Info</button>
+            <button type="submit" name="zahid" class="btn btn-success btn-block">Save Manufacture Info</button>
           </div>
         </div>
 
