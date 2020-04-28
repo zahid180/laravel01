@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Manufacture;
 use App\product;
+use DB;
 
 
 class ProductController extends Controller
@@ -45,5 +46,29 @@ class ProductController extends Controller
       $product->productImage=$imageUrl;
       $product->publicationStatus=$request->publicationStatus;
       $product->save();
+    }
+    public function manageProduct(){
+      // $products=product::all();
+      $Products=DB::table('products')
+      ->join('Categories', 'products.categoryId', '=','Categories.id')
+      ->join('Manufactures','products.manufactureId','=','Manufactures.id')
+      ->select('products.*','Categories.categoryName','Manufactures.manufactureName')
+      ->get();
+      // echo "<pre>";
+      // print_r($Products);
+      // exit();
+      return view('admin.product.manageProduct',['Products'=>$Products]);
+    }
+    public function viewtProduct($id){
+      $productById=DB::table('products')
+      ->join('Categories', 'products.categoryId', '=','Categories.id')
+      ->join('Manufactures','products.manufactureId','=','Manufactures.id')
+      ->select('products.*','Categories.categoryName','Manufactures.manufactureName')
+      ->where('products.id',$id)
+      ->first();
+      // echo "<pre>";
+      // print_r($Products);
+      // exit();
+      return view('admin.product.viewProduct',['Product'=>$productById]);
     }
 }

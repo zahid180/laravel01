@@ -44,7 +44,7 @@ Route::get('/manufacture/delet/{id}','ManufactureController@deletManufacture');
 Route::get('/product/add','productController@addProduct');
 Route::post('product/save','productController@storeProduct');
 Route::get('/product/manage','productController@manageProduct');
-Route::get('/product/edit/{id}','productController@editProduct');
+Route::get('//product/view/{id}','productController@viewtProduct');
 Route::post('/product/update','productController@updateProduct');
 Route::get('/product/delet/{id}','productController@deletProduct');
 // end Product info
