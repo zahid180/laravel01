@@ -17,7 +17,7 @@
         <tr>
           <td>{{$manufacture->id}}</td>
           <td>{{$manufacture->manufactureName}}</td>
-          <td>{{$manufacture->manufactureDescription}}</td>
+          <td>{!!$manufacture->manufactureDescription!!}</td>
           <td>{{$manufacture->publicationStatus==1 ?'Publish':'Unpublish'}}</td>
           <td>
             <a href="{{url('/manufacture/edit/'.$manufacture->id)}}" class="btn btn-success">Edit</a>

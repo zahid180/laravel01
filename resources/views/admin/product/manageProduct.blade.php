@@ -25,8 +25,8 @@
           <td>{{$Product->publicationStatus==1 ?'Publish':'Unpublish'}}</td>
           <td>
             <a href="{{url('/product/view/'.$Product->id)}}" class="btn btn-success">View</a>
-            <a href="{{url('/category/edit/'.$Product->id)}}" class="btn btn-success">Edit</a>
-            <a href="{{url('/category/delet/'.$Product->id)}}" class="btn btn-success" onclick="return confirm('Are You Sure Delete data')">Delet</a>
+            <a href="{{url('/product/edit/'.$Product->id)}}" class="btn btn-success">Edit</a>
+            <a href="{{url('/product/delet/'.$Product->id)}}" class="btn btn-success" onclick="return confirm('Are You Sure Delete data')">Delet</a>
           </td>
         </tr>
         @endforeach

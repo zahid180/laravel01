@@ -71,4 +71,60 @@ class ProductController extends Controller
       // exit();
       return view('admin.product.viewProduct',['Product'=>$productById]);
     }
+
+    public function editProduct($id){
+      // $products=new product(); should be the same $products=product::
+      $products=product::where('id',$id)->first();
+      $categories=Category::where('publicationStatus',1)->get();
+      $manufactures=Manufacture::where('publicationStatus',1)->get();
+      // return view('admin.product.editProduct',['Product'=>$products,'categories'=>$categories ,'manufactures'=>$manufactures]);
+      // should be the same
+      return view('admin.product.editProduct')
+      ->with('Product',$products)
+      ->with('categories',$categories)
+      ->with('manufactures',$manufactures);
+    }
+
+
+
+
+    public function updateProduct(Request $request){
+      $imageUrl=$this->imageExitStatus($request);
+      $product=product::find($request->productId);
+      $product->productName=$request->productName;
+      $product->categoryId=$request->categoryId;
+      $product->manufactureId=$request->manufactureId;
+      $product->productPrice=$request->productPrice;
+      $product->productQuantity=$request->productQuantity;
+      $product->productshortDescription=$request->productshortDescription;
+      $product->productLongDescription=$request->productLongDescription;
+      $product->productImage=$imageUrl;
+      $product->publicationStatus=$request->publicationStatus;
+      $product->save();
+
+      return redirect('/product/manage')->with('massage','Product Update Successfully');
+
+    }
+    private function imageExitStatus($request){
+      $productById=product::where('id',$request->productId)->first();
+      $ProductImage=$request->file('productImage');
+      if ($ProductImage) {
+      $oldImageUrl=$productById->productImage;
+      unlink($oldImageUrl);
+      $name=$ProductImage->getClientOriginalName();
+      $uploadPath='productImage/';
+      $ProductImage->move($uploadPath,$name);
+      $imageUrl=$uploadPath.$name;
+    }else {
+      $imageUrl=$productById->productImage;
+    }
+    return $imageUrl;
+    }
+
+
+    public function deletProduct($id){
+      $product=product::find($id);
+      $product->delete();
+        return redirect('/product/manage')->with('massage','Product Delete successfully');
+    }
 }

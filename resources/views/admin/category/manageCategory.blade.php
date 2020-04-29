@@ -17,7 +17,7 @@
         <tr>
           <td>{{$category->id}}</td>
           <td>{{$category->categoryName}}</td>
-          <td>{{$category->categoryDescription}}</td>
+          <td>{!!$category->categoryDescription!!}</td>
           <td>{{$category->publicationStatus==1 ?'Publish':'Unpublish'}}</td>
           <td>
             <a href="{{url('/category/edit/'.$category->id)}}" class="btn btn-success">Edit</a>
